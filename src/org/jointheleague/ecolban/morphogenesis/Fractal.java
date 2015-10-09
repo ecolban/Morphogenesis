@@ -5,18 +5,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import java.awt.print.PageFormat;
-import java.awt.print.Paper;
-import java.awt.print.Printable;
-import java.awt.print.PrinterException;
-import java.awt.print.PrinterJob;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -56,15 +48,6 @@ public class Fractal extends JPanel implements Runnable {
 		ticker.start();
 	}
 
-	private void grow() {
-		if (growth < 1.0) {
-			growth += 0.001;
-			repaint();
-		} else {
-			ticker.stop();
-		}
-	}
-
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -89,6 +72,15 @@ public class Fractal extends JPanel implements Runnable {
 				fillFractal(g2, transforms);
 				g2.setTransform(cachedTransform);
 			}
+		}
+	}
+
+	private void grow() {
+		if (growth < 1.0) {
+			growth += 0.001;
+			repaint();
+		} else {
+			ticker.stop();
 		}
 	}
 
