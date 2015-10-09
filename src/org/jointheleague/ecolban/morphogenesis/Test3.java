@@ -13,14 +13,14 @@ public class Test3 implements FractalSpec {
 
 	@Override
 	public Rectangle2D getUnitCube() {
-		return new Rectangle2D.Double(-G * G, -G, 1.0, 1.0);
+		return new Rectangle2D.Double(G - 1.0, -G, 1.0, 1.0);
 	}
 
 	@Override
 	public AffineTransform[] getTransforms() {
 		return new AffineTransform[] {
 				new AffineTransform(0.0, -1.0, G, 0, 0, 0),
-				new AffineTransform(0.0, G, -G * G, 0.0, G * G, 0)
+				new AffineTransform(0.0, G, G - 1.0, 0.0, -G + 1.0, 0)
 		};
 	}
 

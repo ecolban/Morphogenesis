@@ -25,7 +25,7 @@ public class Fractal extends JPanel implements Runnable {
 	private Timer ticker;
 
 	public static void main(String[] args) {
-		FractalSpec spec = new Test3();
+		FractalSpec spec = new Test4();
 		SwingUtilities.invokeLater(new Fractal(spec));
 	}
 
