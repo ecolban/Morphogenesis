@@ -25,9 +25,10 @@ public class Organism extends JPanel implements Runnable, ActionListener {
 
     private static final int MARGIN = 10;
     private Timer ticker;
+    private double rate = 2.0;
     private List<Cell> cells = new ArrayList<>();
     private Rectangle2D unitCube = Cell.getUnitCube();
-    private double time = 0.0;
+    private double time = 0.005;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Organism());
@@ -68,12 +69,13 @@ public class Organism extends JPanel implements Runnable, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         List<Cell> nextGeneration = new ArrayList<>();
-        time += 0.001;
+        time += 0.00001 * rate;
+        rate *= 1.005;
         if (time >= 1) {
             ticker.stop();
         }
         for (Cell c : cells) {
-            if (c.getSize(time) > 0.00005 * (1.0 + 4 * RNG.nextDouble())) {
+            if (c.getSize(time) > 0.0005 * (1  + 2 * (0.5 - RNG.nextDouble()))) {
                 for (Cell cc : c.split()) {
                     nextGeneration.add(cc);
                 }
